@@ -13,6 +13,10 @@
                 @endif
 
             @endif
+            @if($delimiter == ' - ' )
+            disabled
+
+            @endif
 
     >
         {!! $delimiter or "" !!}{{$category_list->name or ""}}

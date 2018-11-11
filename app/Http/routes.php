@@ -162,6 +162,8 @@ Route::get('myorder', 'CartController@user_orderlist');
 
 Route::get('cancel_order/{order_id}', 'CartController@cancel_order');
 
+Route::get('ajax/ingredients', 'AjaxController@ingredients');
+
 
 
 
@@ -174,6 +176,8 @@ Route::get('admin/password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('admin/password/reset', 'Auth\PasswordController@postReset');
 
 Route::post('contact_send', 'IndexController@contact_send');
+
+
 
  
 

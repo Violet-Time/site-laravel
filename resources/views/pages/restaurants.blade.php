@@ -77,8 +77,8 @@
                                     <span></span>
                                 </div>
                             </div>
-                            <span class="d_type">{{$restaurant->type}}</span>
-                            <span class="d_kitchen"><span>Кухни:</span> {{$restaurant->type}}</span>
+                            <span class="d_type"></span>
+                            <span class="d_kitchen"><span>Кухни:</span></span>
                         </div>
                     </div>
                     <div class="mc_bot">

@@ -19,8 +19,7 @@
 <link href="{{ URL::asset('site_assets/css/magnific-popup.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('site_assets/css/style.css') }}" rel="stylesheet" type="text/css">
 
-<script src="{{ URL::asset('https://code.jquery.com/jquery.min.js') }}"></script>
-<script src="{{ URL::asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
+<script src="{{ URL::asset('https://code.jquery.com/jquery-3.3.1.min.js') }}"></script>
 
 
 

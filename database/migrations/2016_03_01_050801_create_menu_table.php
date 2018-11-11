@@ -19,7 +19,8 @@ class CreateMenuTable extends Migration
             $table->string('menu_name');
             $table->longtext('description');         
             $table->integer('price');
-            $table->string('menu_image');       
+            $table->string('menu_image');
+            $table->json('ingredients');
         });
     }
 

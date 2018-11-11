@@ -30,6 +30,7 @@
             <div class="panel-body">
                 {!! Form::open(array('url' => array('admin/restaurants/addrestaurant'),'class'=>'form-horizontal padding-15','name'=>'category_form','id'=>'category_form','role'=>'form','enctype' => 'multipart/form-data')) !!} 
                 <input type="hidden" name="id" value="{{ isset($restaurant->id) ? $restaurant->id : null }}">
+                @if(isset($restaurant->id))
                 <div class="form-group">
                     @foreach($types as $i => $type)
                         @if($type->parent_id == 0)
@@ -37,11 +38,11 @@
                             <label for="" class="col-sm-3 control-label">{{$type->name}}</label>
                             <div class="col-sm-9">
                                 <select id="basic" {{ $type->type == 1 ? 'multiple' : null }} name="restaurant_type[]" class="selectpicker show-tick form-control">
-                                    <option value="">Select Type</option>
+                                    <option value="" disabled >Select Type</option>
 
                                     @foreach($types as $i => $children)
                                         @if($children->parent_id == $type->id)
-                                            <option value="{{$children->id}}" selected >{{$children->name}}</option>
+                                            <option value="{{$children->id}}" {{ $restaurant->filters->where('id',$children->id)->count() ? 'selected' : null }} >{{$children->name}}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -52,6 +53,7 @@
 
 
                 </div>
+                @endif
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Restaurant Name</label>
                       <div class="col-sm-9">

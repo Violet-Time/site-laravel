@@ -22,22 +22,22 @@ class IndexController extends Controller
     public function index()
     { 
     	if(!$this->alreadyInstalled()) {
-            return redirect('install');
+    	    return redirect('install');
         }
-    	 
-         $types=Types::orderBy('name')->get();
 
-         $restaurants = DB::table('restaurants')
+        // $types=Types::orderBy('name')->get();
+
+      /*   $restaurants = DB::table('restaurants')
                            ->leftJoin('restaurant_types', 'restaurants.restaurant_type', '=', 'restaurant_types.id')
                            ->select('restaurants.*','restaurant_types.type')
                            ->where('restaurants.review_avg', '>=', '4')
                            ->orderBy('restaurants.review_avg', 'desc')
                            ->take(6)
-                           ->get();
+                           ->get();*/
         
 
 
-        return view('pages.index',compact('restaurants','types'));
+        return view('pages.index'/*,compact('restaurants','types')*/);
     }
     
     public function about_us()

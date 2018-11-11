@@ -44,7 +44,7 @@
                                     <option value="{{$category->id}}" selected >{{$category->category_name}}</option>
                                      
                                 @else
-                                <option value="{{$category->id}}">{{$category->category_name}}</option> 
+                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
                                 @endif                          
                             @endforeach
                         </select>
@@ -68,6 +68,19 @@
                       <div class="col-sm-9">
                          
                         <input id="touch-spin-2" data-toggle="touch-spin" data-min="-1000000" data-max="1000000" data-prefix="$" data-step="1" type="text" value="{{ isset($menu->price) ? $menu->price : null }}" name="price" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Состав</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="description" value="{{ isset($menu->description) ? $menu->description : null }}" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <label for="" class="col-sm-2 control-label">Ингредиенты</label>
+                        <button type="button" class="btn btn-default glyphicon-plus add-group"></button>
+                        <label for="" class="col-sm-11 control-label"></label>
                     </div>
                 </div>
                 <div class="form-group">

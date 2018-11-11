@@ -28,8 +28,8 @@ class RestaurantsController extends Controller
         $types=Types::orderBy('name')->get();
 
         $restaurants = DB::table('restaurants')
-                           ->leftJoin('restaurant_types', 'restaurants.restaurant_type', '=', 'restaurant_types.id')                           
-                           ->select('restaurants.*','restaurant_types.type')
+                          // ->leftJoin('restaurant_types', 'restaurants.restaurant_type', '=', 'restaurant_types.id')
+                           ->select('restaurants.*')
                            //->where('restaurants.cat_id', '=', $cat->id)
                            ->orderBy('id', 'desc')
                            ->paginate(10);

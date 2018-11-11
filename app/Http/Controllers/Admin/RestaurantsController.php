@@ -30,7 +30,6 @@ class RestaurantsController extends MainAdminController
         
               
         $restaurants = Restaurants::orderBy('restaurant_name')->get();
-        
         if(Auth::User()->usertype!="Admin"){
 
             \Session::flash('flash_message', 'Access denied!');
@@ -64,7 +63,6 @@ class RestaurantsController extends MainAdminController
     	$data =  \Input::except(array('_token')) ;
 	    
 	    $rule=array(
-		        'restaurant_type' => 'required',
                 'restaurant_name' => 'required',
                 'restaurant_address' => 'required',
                 'restaurant_logo' => 'mimes:jpg,jpeg,gif,png' 		         
@@ -120,14 +118,14 @@ class RestaurantsController extends MainAdminController
             $restaurant_obj->restaurant_logo = $hardPath;
              
         }
-        if($request->input('restaurant_type')){
+        if(!empty($inputs['id']) and $request->input('restaurant_type')){
+            $restaurant_obj->filters()->detach();
             $restaurant_obj->filters()->attach($request->input('restaurant_type'));
         }
 		
         $user_id=Auth::User()->id;
 		 
 		$restaurant_obj->user_id = $user_id;
-        $restaurant_obj->restaurant_type = 1;
         $restaurant_obj->restaurant_name = $inputs['restaurant_name'];
 		$restaurant_obj->restaurant_slug = $restaurant_slug;
         $restaurant_obj->restaurant_address = $inputs['restaurant_address']; 
@@ -191,6 +189,7 @@ class RestaurantsController extends MainAdminController
         }
         	
         $cat = Restaurants::findOrFail($id);
+        $cat->filters()->detach();
         $cat->delete();
 
         \Session::flash('flash_message', 'Deleted');

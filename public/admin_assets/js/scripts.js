@@ -4177,3 +4177,54 @@ var createSnackbar = (function() {
 
         }
 }(jQuery));
+
+$(document).on('click', ".form-group .add-group", function() {
+
+    grouptemplate = "<div class=\"row group\">" +
+        "             <div class=\"row\">\n" +
+        "                        <label for=\"\" class=\"col-sm-1 col-md-offset-1 control-label\">Имя</label>\n" +
+        "                        <div class=\"col-sm-6\">\n" +
+        "                            <input type=\"text\" name=\"description\" value=\"\" class=\"form-control\">\n" +
+        "                        </div>\n" +
+        "                        <label for=\"\" class=\"col-sm-1 control-label\">Тип</label>\n" +
+        "                        <div class=\"col-sm-2\">\n" +
+        "                            <select id=\"basic\" name=\"menu_cat\" class=\"selectpicker show-tick form-control\">\n" +
+        "                                <option value=\"\">Select Type</option>\n" +
+        "                                <option value=\"1\">Checkbox</option>\n" +
+        "                                <option value=\"0\">Radio</option>\n" +
+        "                            </select>\n" +
+        "                        </div>\n" +
+        "                        <button type=\"button\" class=\"remove-group btn btn-default glyphicon-minus\"></button>\n" +
+        "</div>\n" +
+        "<div class=\"col-sm-12\">\n" +
+        "                        <button type=\"button\" class=\"add-field col-sm-8 col-md-offset-2 btn btn-default glyphicon-plus\"></button>\n" +
+        "</div>\n" +
+        "                    </div>";
+
+    fieldtemplate = "<div class=\"row field\">\n" +
+        "                        <label for=\"\" class=\"col-sm-1 col-md-offset-2 control-label\">имя</label>\n" +
+        "                        <div class=\"col-sm-6\">\n" +
+        "                            <input type=\"text\" name=\"description\" value=\"\" class=\"form-control\">\n" +
+        "                        </div>\n" +
+        "                        <label for=\"\" class=\"col-sm-1 control-label\">Цена</label>\n" +
+        "                        <div class=\"col-sm-1\">\n" +
+        "                            <input id=\"touch-spin-2\" data-toggle=\"touch-spin\" data-min=\"-1000000\" data-max=\"1000000\" data-prefix=\"$\" data-step=\"1\" type=\"text\" value=\"1\" name=\"price\" class=\"form-control\"/>\n" +
+        "                        </div>\n" +
+        "                        <button type=\"button\" class=\"remove-field btn btn-default glyphicon-minus\"></button>\n" +
+        "                    </div>";
+
+    var container = $(this).closest(".form-group");
+    container.append(
+        grouptemplate.replace(/\{\{g\}\}/g, container.children(".group").last().data("i") + 1 || 1)
+    );
+}).on('click', ".form-group .add-field", function() {
+    var group = $(this).closest(".group");
+    group.append(
+        fieldtemplate.replace(/\{\{g\}\}/g, group.data("i"))
+            .replace(/\{\{f\}\}/g, group.children(".field").last().data("i") + 1 || 1)
+    );
+}).on('click', ".form-group .field .remove-field", function() {
+    $(this).closest(".field").remove();
+}).on('click', ".form-group .group .remove-group", function() {
+    $(this).closest(".group").remove();
+});

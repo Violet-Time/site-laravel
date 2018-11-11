@@ -6,7 +6,7 @@
 
 @section("content")
   <div class="side_page"></div>
-  <div class="menu_page">
+  <div id="menu_page" class="menu_page">
     <div class="mp_top">
       <div class="mt_img">
         <img src="{{ URL::asset('upload/'.getcong('page_bg_image')) }}" alt="">
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="cards">
+    <div id="cards" class="cards">
       <a href="menu.html" class="c_more">Ещё</a>
 
       <div class="tabs_block">
@@ -45,10 +45,9 @@
 
 
         @foreach(\App\Categories::where('restaurant_id',$restaurant->id)->orderBy('category_name')->get() as $n=>$cat)
-        <div class="tab_content">
-          <div class="tab_item">
+        <ui class="dish_list tab_content">
             @foreach(\App\Menu::where('menu_cat',$cat->id)->orderBy('menu_name')->get() as $menu_item)
-            <div class="card">
+            <li class="dish popular card">
               <a href="menu.html" class="c_name">{{$menu_item->menu_name}}</a>
               <div class="product-description">
                 <a href="menu.html" class="c_img">
@@ -60,15 +59,21 @@
                 </a>
                 <div class="text-product">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, perferendis.</div>
               </div>
-              <div class="c_bot">
-                <span class="c_count">1 шт.</span>
-                <span class="c_price">{{getcong('currency_symbol')}} {{$menu_item->price}}</span>
-                <a href="#ingredients-popup" class="ingredients-popup c_oreder">ЗАКАЗАТЬ</a>
-              </div>
-            </div>
+                <form id="ingredients" action="" method="get" data-chain-id="15275">
+                  <input type="hidden" name="product_id" value="302181043"/>
+                  <input type="hidden" name="quantity" value="1"/>
+                  <input type="hidden" name="s_id" value="23582"/>
+                  <input type="hidden" name="byWeight" value="0"/>
+                  <div class="c_bot">
+                    <span class="c_count">1 шт.</span>
+                    <span class="c_price">{{getcong('currency_symbol')}} {{$menu_item->price}}</span>
+                    <a href="#ingredients-popup" class="button show-ingr-popup ingredients-popup c_oreder">ЗАКАЗАТЬ</a>
+                  </div>
+
+                </form>
+            </li>
             @endforeach
-          </div>
-        </div>
+        </ui>
         @endforeach
 
 
