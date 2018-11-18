@@ -4180,16 +4180,16 @@ var createSnackbar = (function() {
 
 $(document).on('click', ".form-group .add-group", function() {
 
-    grouptemplate = "<div class=\"row group\">" +
+    grouptemplate = "<div class=\"row group\" data-i={{g}}>" +
         "             <div class=\"row\">\n" +
         "                        <label for=\"\" class=\"col-sm-1 col-md-offset-1 control-label\">Имя</label>\n" +
         "                        <div class=\"col-sm-6\">\n" +
-        "                            <input type=\"text\" name=\"description\" value=\"\" class=\"form-control\">\n" +
+        "                            <input type=\"text\" name=\"popup_ingredients[ingredients][{{g}}][title]\" value=\"\" class=\"form-control\">\n" +
         "                        </div>\n" +
         "                        <label for=\"\" class=\"col-sm-1 control-label\">Тип</label>\n" +
         "                        <div class=\"col-sm-2\">\n" +
-        "                            <select id=\"basic\" name=\"menu_cat\" class=\"selectpicker show-tick form-control\">\n" +
-        "                                <option value=\"\">Select Type</option>\n" +
+        "                            <select id=\"basic\" name=\"popup_ingredients[ingredients][{{g}}][type]\" class=\"selectpicker show-tick form-control\">\n" +
+        "                                <option value=\"\" disabled >Select Type</option>\n" +
         "                                <option value=\"1\">Checkbox</option>\n" +
         "                                <option value=\"0\">Radio</option>\n" +
         "                            </select>\n" +
@@ -4201,14 +4201,14 @@ $(document).on('click', ".form-group .add-group", function() {
         "</div>\n" +
         "                    </div>";
 
-    fieldtemplate = "<div class=\"row field\">\n" +
+    fieldtemplate = "<div class=\"row field\" data-i={{f}}>\n" +
         "                        <label for=\"\" class=\"col-sm-1 col-md-offset-2 control-label\">имя</label>\n" +
         "                        <div class=\"col-sm-6\">\n" +
-        "                            <input type=\"text\" name=\"description\" value=\"\" class=\"form-control\">\n" +
+        "                            <input type=\"text\" name=\"popup_ingredients[ingredients][{{g}}][mass][{{f}}][title]\" value=\"\" class=\"form-control\">\n" +
         "                        </div>\n" +
         "                        <label for=\"\" class=\"col-sm-1 control-label\">Цена</label>\n" +
         "                        <div class=\"col-sm-1\">\n" +
-        "                            <input id=\"touch-spin-2\" data-toggle=\"touch-spin\" data-min=\"-1000000\" data-max=\"1000000\" data-prefix=\"$\" data-step=\"1\" type=\"text\" value=\"1\" name=\"price\" class=\"form-control\"/>\n" +
+        "                            <input id=\"touch-spin-2\" data-toggle=\"touch-spin\" data-min=\"-1000000\" data-max=\"1000000\" data-prefix=\"$\" data-step=\"1\" type=\"text\" value=\"1\" name=\"popup_ingredients[ingredients][{{g}}][mass][{{f}}][price]\" class=\"form-control\"/>\n" +
         "                        </div>\n" +
         "                        <button type=\"button\" class=\"remove-field btn btn-default glyphicon-minus\"></button>\n" +
         "                    </div>";

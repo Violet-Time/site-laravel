@@ -8,7 +8,7 @@ class Menu extends Model
 {
     protected $table = 'menu';
 
-    protected $fillable = ['restaurant_id','menu_cat','menu_name', 'description','price','menu_image'];
+    protected $fillable = ['restaurant_id','menu_cat','menu_name', 'description','price','menu_image','ingredients'];
 
 
 	public $timestamps = false; 

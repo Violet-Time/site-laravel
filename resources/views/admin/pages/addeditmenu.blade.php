@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Состав</label>
                     <div class="col-sm-9">
-                        <input type="text" name="description" value="{{ isset($menu->description) ? $menu->description : null }}" class="form-control">
+                        <input type="text" name="popup_ingredients[composition]" value="{{ isset($menu->description) ? $menu->description : null }}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">

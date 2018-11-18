@@ -112,11 +112,12 @@ class MenuController extends MainAdminController
         $menu->menu_cat = $inputs['menu_cat'];
         $menu->menu_name = $inputs['menu_name'];
         $menu->description = $inputs['description'];
-        $menu->price = $inputs['price']; 
-		 
-		
-		 
-	    $menu->save();
+        $menu->price = $inputs['price'];
+        $menu->ingredients = json_encode($inputs['popup_ingredients']);
+
+
+
+        $menu->save();
 		
 		if(!empty($inputs['id'])){
 
